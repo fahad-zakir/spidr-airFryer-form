@@ -63,15 +63,15 @@ function App() {
               </div>
 
               {/* Product Image Side */}
-              <div className="flex justify-center order-1 lg:order-2">
-                <div className="relative">
+              <div className="flex justify-center items-start order-1 lg:order-2">
+                <div className="relative mt-24 lg:mt-24">
                   {/* Floating animation wrapper */}
                   <div className="animate-bounce-slow">
                     {/* Glow effect */}
                     <div className="absolute inset-0 bg-spidr-teal/30 blur-3xl rounded-full scale-110 animate-pulse"></div>
                     
-                    {/* Product image */}
-                    <div className="relative z-10 bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-2xl">
+                    {/* Product image container with solid background */}
+                    <div className="relative z-10 bg-gradient-to-br from-spidr-gray/90 to-spidr-dark/90 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-2xl">
                       <ProductImage 
                         src="/assets/airfryer.png" 
                         alt="Spidr Air Fryer - Premium Cooking Technology" 

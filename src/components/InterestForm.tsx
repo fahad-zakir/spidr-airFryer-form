@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SuccessModal from './SuccessModal';
 
 interface FormData {
   firstName: string;
@@ -20,6 +21,7 @@ const InterestForm: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const formatPhoneNumber = (value: string) => {
     const cleaned = value.replace(/\D/g, '');
@@ -78,6 +80,19 @@ const InterestForm: React.FC = () => {
     }
   };
 
+  const handleCloseModal = () => {
+    setShowSuccessModal(false);
+    // Reset form after modal is closed
+    setFormData({
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      costGuess: '',
+      spidrPin: '',
+    });
+  };
+
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
 
@@ -118,21 +133,11 @@ const InterestForm: React.FC = () => {
     if (validateForm()) {
       console.log('Form Submission Data:', {
         ...formData,
-        costGuess: `$${formData.costGuess}`
+        costGuess: `${formData.costGuess}`
       });
       
-      // Show success message (in a real app, this would be a toast or modal)
-      alert('Interest form submitted successfully! Check the console for details.');
-      
-      // Reset form
-      setFormData({
-        firstName: '',
-        lastName: '',
-        phoneNumber: '',
-        email: '',
-        costGuess: '',
-        spidrPin: '',
-      });
+      // Show success modal
+      setShowSuccessModal(true);
     }
   };
 
@@ -291,6 +296,13 @@ const InterestForm: React.FC = () => {
           </button>
         </div>
       </form>
+
+      {/* Success Modal */}
+      <SuccessModal 
+        isOpen={showSuccessModal}
+        onClose={handleCloseModal}
+        formData={formData}
+      />
     </div>
   );
 };
