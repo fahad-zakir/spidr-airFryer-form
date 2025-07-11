@@ -16,6 +16,38 @@ body {
   overflow-x: hidden;
 }
 
+/* Auto-hiding scrollbars - only addition for scrollbar fix */
+html {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+html::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Show scrollbar only when hovering over the page */
+html:hover::-webkit-scrollbar {
+  width: 8px;
+}
+
+html:hover::-webkit-scrollbar-track {
+  background: rgba(45, 55, 72, 0.3);
+}
+
+html:hover::-webkit-scrollbar-thumb {
+  background: rgba(79, 209, 199, 0.5);
+  border-radius: 4px;
+}
+
+html:hover::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 209, 199, 0.7);
+}
+
 /* Custom animations */
 @keyframes bounce-slow {
 
@@ -33,50 +65,8 @@ body {
   animation: bounce-slow 3s infinite;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(45, 55, 72, 0.3);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(79, 209, 199, 0.5);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(79, 209, 199, 0.7);
-}
-
 /* Smooth focus transitions */
 input:focus,
 button:focus {
   transition: all 0.2s ease-in-out;
-}
-
-/* Custom glass morphism utility */
-.glass-morphism {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Loading states */
-.loading-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-
-  100% {
-    background-position: 200% 0;
-  }
 }
