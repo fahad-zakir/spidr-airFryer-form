@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+/* Additional component-specific styles */
+
+.hero-gradient {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a202c 100%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Form specific styles */
+.form-container {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Button hover effects */
+.btn-primary {
+  background: linear-gradient(135deg, #4fd1c7, #63b3ed);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #81e6d9, #4fd1c7);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(79, 209, 199, 0.3);
+}
+
+/* Product showcase animations */
+.product-glow {
+  filter: drop-shadow(0 0 30px rgba(79, 209, 199, 0.3));
+}
+
+/* Responsive design helpers */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+
+  .product-image {
+    max-width: 280px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-bounce-slow,
+  .animate-pulse {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
   }
 }
